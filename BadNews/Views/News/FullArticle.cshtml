@@ -1,6 +1,6 @@
 ﻿@using BadNews.Elevation
+@using BadNews.BlazorComponents
 @model BadNews.Models.News.FullArticleModel
-
 <main role="main" class="container">
     <div class="row">
         <div class="col-md-8 news-main">
@@ -17,6 +17,11 @@
                     </form>
                 }
                 @Html.Raw(Model.Article.ContentHtml)
+                
+                <div id="comments"></div>
+                
+                @(await Html.RenderComponentAsync<Comments>(RenderMode.ServerPrerendered))
+                
             </div>
         </div>
 
